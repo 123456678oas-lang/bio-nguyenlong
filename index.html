@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nguyễn Long - Bio Link</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Font chữ Minecraft Pixel -->
+    <link href="https://fonts.cdnfonts.com/css/minecraft-4" rel="stylesheet">
+</head>
+<body>
+    <!-- Container chứa cánh hoa anh đào rơi -->
+    <div id="sakura-container"></div>
+
+    <!-- Background Video TikTok / Vũ trụ -->
+    <div class="video-bg-container">
+        <video autoplay loop muted playsinline class="bg-video" id="bgVideo">
+            <source src="background.mp4" type="video/mp4">
+        </video>
+        <div class="video-overlay"></div>
+    </div>
+
+    <!-- Wrapper chứa Bio & Dynamic Island -->
+    <div class="main-wrapper">
+        <!-- Khung Bio Chính (Trong suốt Glassmorphism) -->
+        <main class="bio-card" id="bioCard">
+            <div class="avatar-container">
+                <!-- Avatar chú gấu đeo kính -->
+                <img src="avt.jpg" alt="Avatar Nguyễn Long" class="avatar" id="userAvatar">
+                <div class="avatar-glow"></div>
+            </div>
+
+            <h1 class="name">Nguyễn Long <i class="fa-solid fa-circle-check verified"></i></h1>
+            
+            <!-- Vị trí & Trường học -->
+            <div class="location-badge">
+                <i class="fa-solid fa-location-dot"></i>
+                <span>TP. Hồ Chí Minh • THCS Gò Vấp</span>
+            </div>
+
+            <!-- Đồng hồ thời gian thực TP.HCM -->
+            <div class="clock-box">
+                <i class="fa-regular fa-clock"></i>
+                <span id="hcmClock">00:00:00</span>
+                <span class="tz-label">ICT (TP.HCM)</span>
+            </div>
+
+            <!-- Lời chào hiệu ứng gõ chữ Minecraft -->
+            <div class="greeting-box">
+                <p class="greeting minecraft-text" id="greetingText"></p>
+                <span class="cursor">|</span>
+            </div>
+
+            <!-- Ô Nhạc Widget Kiểu Mới (Thiết kế giống hình mẫu) -->
+            <div class="music-widget">
+                <div class="widget-bg" id="widgetBg"></div>
+                <div class="widget-overlay"></div>
+                <div class="widget-content">
+                    <div class="song-meta">
+                        <h4 class="song-title">Nuts Instrumental</h4>
+                        <p class="song-artist">Lil Peep ft. Rainy Bear</p>
+                    </div>
+                    <button class="widget-play-btn" id="playPauseBtn">
+                        <i class="fa-solid fa-pause" id="playIcon"></i>
+                    </button>
+                </div>
+                <!-- Sóng âm thanh nhảy theo nhạc -->
+<div class="equalizer" id="equalizer">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+            </div>
+        </main>
+
+        <!-- Thanh Dynamic Island Kế Bên -->
+        <aside class="dynamic-island" id="dynamicIsland">
+            <div class="island-header">
+                <span class="island-title"><i class="fa-solid fa-bolt"></i> Social Links</span>
+                <button class="toggle-btn" id="toggleIslandBtn" title="Thu nhỏ / Phóng to">
+                    <i class="fa-solid fa-compress" id="toggleIcon"></i>
+                </button>
+            </div>
+            
+            <div class="social-links" id="socialLinks">
+                <a href="https://discord.gg/ZJ3aKVTkW" target="_blank" class="social-btn discord">
+                    <i class="fa-brands fa-discord"></i>
+                    <span>Discord</span>
+                </a>
+                <a href="https://www.tiktok.com/@nglong28113?_r=1&_t=ZS-9AKaK1QLYRS" target="_blank" class="social-btn tiktok">
+                    <i class="fa-brands fa-tiktok"></i>
+                    <span>TikTok</span>
+                </a>
+                <a href="https://www.facebook.com/share/1JzCLycdZG/" target="_blank" class="social-btn facebook">
+                    <i class="fa-brands fa-facebook"></i>
+                    <span>Facebook</span>
+                </a>
+            </div>
+        </aside>
+    </div>
+
+    <!-- Element Âm thanh -->
+    <audio id="audioPlayer" loop></audio>
+
+    <script src="script.js"></script>
+</body>
+</html>

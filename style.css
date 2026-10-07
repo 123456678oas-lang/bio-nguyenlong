@@ -1,0 +1,435 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow-x: hidden;
+    background: #000;
+    color: #ffffff;
+    perspective: 1000px;
+}
+
+/* Hiệu ứng Hoa Anh Đào Rơi */
+#sakura-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 99;
+}
+
+.petal {
+    position: absolute;
+    background: radial-gradient(circle, #ffb7c5 0%, #ff69b4 100%);
+    border-radius: 150% 0 150% 0;
+    opacity: 0.8;
+    pointer-events: none;
+    animation: fall linear infinite;
+}
+
+@keyframes fall {
+    0% {
+        top: -10%;
+        transform: translateX(0) rotate(0deg);
+    }
+    100% {
+        top: 110%;
+        transform: translateX(100px) rotate(360deg);
+    }
+}
+
+/* Background Video */
+.video-bg-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    overflow: hidden;
+}
+
+.bg-video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.video-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.35);
+    backdrop-filter: blur(2px);
+}
+
+/* Bố Cục Chính */
+.main-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+    z-index: 10;
+    padding: 20px;
+    max-width: 900px;
+    width: 100%;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+/* Khung Bio TRONG SUỐT HOÀN HẢO */
+.bio-card {
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(12px) saturate(160%);
+    -webkit-backdrop-filter: blur(12px) saturate(160%);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: 28px;
+    padding: 35px 25px;
+    width: 380px;
+    text-align: center;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5),
+                inset 0 0 15px rgba(255, 255, 255, 0.05);
+    transform-style: preserve-3d;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    position: relative;
+}
+
+.bio-card:hover {
+    background: rgba(255, 255, 255, 0.07);
+    border-color: rgba(56, 189, 248, 0.5);
+    box-shadow: 0 20px 50px rgba(56, 189, 248, 0.25),
+                inset 0 0 20px rgba(255, 255, 255, 0.15);
+}
+
+.avatar-container {
+    position: relative;
+    width: 110px;
+    height: 110px;
+    margin: 0 auto 15px;
+}
+
+.avatar {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid rgba(255, 255, 255, 0.8);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6);
+    transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.bio-card:hover .avatar {
+    transform: scale(1.05);
+    border-color: #38bdf8;
+}
+
+.name {
+    font-size: 1.7rem;
+    font-weight: 700;
+    margin-bottom: 6px;
+    letter-spacing: 0.5px;
+    background: linear-gradient(to right, #ffffff, #a5b4fc);
+    -webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+}
+
+.verified {
+    color: #38bdf8;
+    font-size: 1.1rem;
+    margin-left: 5px;
+    -webkit-text-fill-color: initial;
+}
+
+/* Badge Vị Trí */
+.location-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.78rem;
+    color: #38bdf8;
+    background: rgba(56, 189, 248, 0.1);
+    border: 1px solid rgba(56, 189, 248, 0.25);
+    padding: 4px 12px;
+    border-radius: 20px;
+    margin-bottom: 10px;
+}
+
+/* Đồng hồ Thời Gian Thực TP.HCM */
+.clock-box {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: #f1f5f9;
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    padding: 6px 14px;
+    border-radius: 16px;
+    margin-bottom: 18px;
+}
+
+.tz-label {
+    font-size: 0.7rem;
+    color: #94a3b8;
+}
+
+/* Khung Chữ Minecraft */
+.greeting-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.35);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 10px 14px;
+    border-radius: 14px;
+    margin-bottom: 20px;
+    min-height: 44px;
+}
+
+.minecraft-text {
+    font-family: 'Minecraft', 'Segoe UI', monospace;
+    font-size: 0.82rem;
+    color: #55ff55;
+    text-shadow: 2px 2px 0px #003300;
+}
+
+.cursor {
+    font-family: 'Minecraft', monospace;
+    color: #55ff55;
+    font-weight: bold;
+    animation: blink 0.8s infinite;
+    margin-left: 2px;
+}
+
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}
+
+/* ===== Ô NHẠC WIDGET KIỂU MỚI (GIỐNG HÌNH MẪU) ===== */
+.music-widget {
+    position: relative;
+    width: 100%;
+    height: 110px;
+    border-radius: 20px;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 15px;
+    background: #111;
+}
+
+.widget-bg {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background-image: url('avt.jpg'); /* Nền mờ bìa album nhạc */
+    background-size: cover;
+    background-position: center;
+    filter: blur(8px) brightness(0.6);
+    transform: scale(1.1);
+    z-index: 1;
+}
+
+.widget-overlay {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: linear-gradient(180deg, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.7) 100%);
+    z-index: 2;
+}
+
+.widget-content {
+    position: relative;
+    z-index: 3;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: left;
+}
+
+.song-title {
+    font-size: 1rem;
+    font-weight: 700;
+    color: #ffffff;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.8);
+}
+
+.song-artist {
+    font-size: 0.8rem;
+    color: #e2e8f0;
+    margin-top: 2px;
+}
+
+.widget-play-btn {
+    background: rgba(255, 255, 255, 0.25);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+color: #fff;
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    transition: all 0.2s ease;
+}
+
+.widget-play-btn:hover {
+    background: #ffffff;
+    color: #000;
+    transform: scale(1.1);
+}
+
+/* Sóng Âm Thanh Equalizer */
+.equalizer {
+    position: relative;
+    z-index: 3;
+    display: flex;
+    align-items: flex-end;
+    gap: 4px;
+    height: 20px;
+}
+
+.equalizer .bar {
+    flex: 1;
+    background: rgba(255, 255, 255, 0.85);
+    height: 20%;
+    border-radius: 2px;
+    transition: height 0.2s ease;
+}
+
+/* Animation khi nhạc phát */
+.equalizer.playing .bar {
+    animation: bounce 0.8s ease-in-out infinite alternate;
+}
+
+.equalizer.playing .bar:nth-child(1) { animation-delay: 0.1s; }
+.equalizer.playing .bar:nth-child(2) { animation-delay: 0.3s; }
+.equalizer.playing .bar:nth-child(3) { animation-delay: 0.5s; }
+.equalizer.playing .bar:nth-child(4) { animation-delay: 0.2s; }
+.equalizer.playing .bar:nth-child(5) { animation-delay: 0.6s; }
+.equalizer.playing .bar:nth-child(6) { animation-delay: 0.4s; }
+.equalizer.playing .bar:nth-child(7) { animation-delay: 0.7s; }
+.equalizer.playing .bar:nth-child(8) { animation-delay: 0.15s; }
+
+@keyframes bounce {
+    0% { height: 15%; }
+    100% { height: 100%; }
+}
+
+/* Dynamic Island */
+.dynamic-island {
+    background: rgba(15, 23, 42, 0.4);
+    backdrop-filter: blur(14px);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 24px;
+    padding: 20px;
+    width: 250px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+    transition: all 0.3s ease;
+    overflow: hidden;
+}
+
+.dynamic-island.minimized {
+    width: 65px;
+    height: 65px;
+    padding: 15px;
+    border-radius: 35px;
+}
+
+.dynamic-island.minimized .social-links,
+.dynamic-island.minimized .island-title {
+    display: none;
+}
+
+.island-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.dynamic-island.minimized .island-header {
+    margin-bottom: 0;
+    justify-content: center;
+}
+
+.island-title {
+    font-weight: 600;
+    color: #f8fafc;
+    font-size: 0.95rem;
+}
+
+.toggle-btn {
+    background: rgba(255, 255, 255, 0.1);
+    border: none;
+    color: #fff;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+}
+
+.toggle-btn:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: scale(1.1);
+}
+
+.social-links {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.social-btn {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 11px 15px;
+    border-radius: 14px;
+    text-decoration: none;
+    color: #fff;
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.social-btn:hover {
+transform: translateX(6px) scale(1.02);
+    background: rgba(255, 255, 255, 0.15);
+}
+
+.social-btn.discord:hover { border-color: #5865F2; box-shadow: 0 0 15px rgba(88, 101, 242, 0.5); }
+.social-btn.tiktok:hover { border-color: #ff0050; box-shadow: 0 0 15px rgba(255, 0, 80, 0.5); }
+.social-btn.facebook:hover { border-color: #1877F2; box-shadow: 0 0 15px rgba(24, 119, 242, 0.5); }
+
+@media (max-width: 768px) {
+    .main-wrapper {
+        flex-direction: column;
+    }
+    .bio-card, .dynamic-island {
+        width: 100%;
+        max-width: 350px;
+    }
+}
